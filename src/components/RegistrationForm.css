@@ -47,3 +47,7 @@ text-align: left;
 input[type="radio"]{
    margin: 0px 10px;
 }
+
+.logo-section{
+    background-color:rgb(17, 33, 63) ;
+}
