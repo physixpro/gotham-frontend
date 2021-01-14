@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import logo from "../images/logo.png";
+import logo from "../images/logo2.png";
 import "./RegistrationForm.css";
 
 // ** CTRL + p opens the filefinder
@@ -300,13 +300,16 @@ const RegistrationForm = () => {
         <img src={logo} alt="logo" width="200px" />
       </section>
       <section className="title-section">
-        <h1> Gotham Gymnastics</h1>
+        <h1> GOTHAM GYMNASTICS</h1>
         <h2>Skill Assesment</h2>
       </section>
 
       {message.length > 0 ? (
         <div className="success-message">{message}</div>
       ) : null}
+
+
+      <section className = "form-background-image"> 
       <form className="registration-form" onSubmit={registrationAndMessage}>
         <section className="input-container">
           <label className="form-label">
@@ -366,7 +369,7 @@ const RegistrationForm = () => {
         <h2>{level} Assesment</h2>
         {level === "IGC" ? (
           <div>
-            <h3>Bridge kick-over</h3>
+            <h3 className="skill-style">Bridge kick-over</h3>
             <input
               required
               type="radio"
@@ -728,6 +731,12 @@ const RegistrationForm = () => {
           Evaluate
         </button>
       </form>
+      <footer className="footer">
+<h5 id="gotham-footer">GOTHAM</h5>
+<h5 id="gymnastics-footer">GYMNASTICS</h5><div id="trademark">&trade;</div>
+<h7 id="brooklyn-footer">BROOKLYN</h7>
+      </footer>
+      </section>
     </div>
   );
 };
