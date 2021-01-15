@@ -8,7 +8,7 @@ const Evaluation = () => {
 
   useEffect(() => {
     const fetchEvaluations = async () => {
-      const res = await axios.get("http://localhost:3001/evaluations");
+      const res = await axios.get("https://gotham-backend.herokuapp.com/evaluations");
       setEvaluations(res.data);
     };
     fetchEvaluations();

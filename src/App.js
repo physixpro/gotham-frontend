@@ -1,6 +1,6 @@
 import RegistrationForm from './components/RegistrationForm';
 import './App.css';
-import Evaluations from './components/Evaluations'
+
 
 
 
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
      
      <RegistrationForm />
-{/* <Evaluations /> */}
+
 
     </div>
   );

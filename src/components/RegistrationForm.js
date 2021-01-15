@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import logo from "../images/logo2.png";
+import newlogo from "../images/newlogo.webp";
 import "./RegistrationForm.css";
 
 // ** CTRL + p opens the filefinder
@@ -113,135 +113,17 @@ const RegistrationForm = () => {
     console.log(e.target.value);
   };
 
-  // const recordSkillFourNo = (e) => {
-  //   setSkillFourNo(e.target.value);
-  //   console.log(e.target.value);
-  // };
+
 
   const recordSkillFiveYes = (e) => {
     setSkillFiveYes(e.target.value)
   }
 
-  // const recordSkillFiveNo = (e) => {
-  //   setSkillFiveNo(e.target.value)
-  // }
-
+ 
   const recordSkillSixYes = (e) => {
     setSkillSixYes(e.target.value)
   }
 
-  // const recordSkillSixNo = (e) => {
-  //   setSkillSixNo(e.target.value)
-  // }
-
-  /************* function that evaluates athletes and sends body data to the database via a post route ***********/
-  // const evaluateAthleteIntermediate = async (e) => {
-  //   e.preventDefault();
-
-  //   const athleteResult = {
-  //     skillOneYes: skillOneYes,
-  //     skillOneNo: skillOneNo,
-  //     skillTwoYes: skillTwoYes,
-  //     skillTwoNo: skillTwoNo,
-  //     skillThreeYes: skillThreeYes,
-  //     skillThreeNo: skillThreeNo,
-  //     skillFourYes: skillFourYes,
-  //     skillFourNo: skillFourNo,
-  //     skillFiveYes: skillFiveYes,
-  //     skillFiveNo: skillFiveNo,
-  //     skillSixYes: skillSixYes,
-  //     skillSixNo: skillSixNo
-  //   };
-
-  //   if (
-  //     skillOneYes === "Yes" &&
-  //     skillTwoYes === "Yes" &&
-  //     skillThreeYes === "Yes" &&
-  //     skillFourYes === "Yes"
-  //   ) {
-  //     setMessage(
-  //       "Congratulations, athlete qualifies for Intermediate level classes!"
-  //     );
-  //   } else {
-  //     setMessage(
-  //       "Congratulations, athlete qualifies for Beginner level classes!"
-  //     );
-  //   }
-
-  //   const res = await axios.post(
-  //     "http://localhost:3001/evaluations",
-  //     athleteResult
-  //   );
-  //   console.log(res);
-  // };
-
-  // const evaluateAthleteAdvanced = async (e) => {
-  //   e.preventDefault();
-
-  //   const athleteResult = {
-  //     skillOneYes: skillOneYes,
-  //     skillOneNo: skillOneNo,
-  //     skillTwoYes: skillTwoYes,
-  //     skillTwoNo: skillTwoNo,
-  //     skillThreeYes: skillThreeYes,
-  //     skillThreeNo: skillThreeNo,
-  //     skillFourYes: skillFourYes,
-  //     skillFourNo: skillFourNo,
-  //   };
-  //   if (
-  //     skillOneYes === "Yes" &&
-  //     skillTwoYes === "Yes" &&
-  //     skillThreeYes === "Yes" &&
-  //     skillFourYes === "Yes" 
-  //   ) {
-  //     setAdvMessage(
-  //       " Congratulations, athlete qualifies for Advanced level classes!"
-  //     );
-  //   } else {
-  //     setAdvMessage(
-  //       "Congratulations, athlete qualifies for Intermediate level classes!"
-  //     );
-  //   }
-
-  //   const res = await axios.post(
-  //     "http://localhost:3001/evaluations",
-  //     athleteResult
-  //   );
-  //   console.log(res);
-  // };
-
-  // const evaluateAthleteIgc = async (e) => {
-  //   e.preventDefault();
-
-  //   const athleteResult = {
-  //     skillOneYes: skillOneYes,
-  //     skillOneNo: skillOneNo,
-  //     skillTwoYes: skillTwoYes,
-  //     skillTwoNo: skillTwoNo,
-  //     skillThreeYes: skillThreeYes,
-  //     skillThreeNo: skillThreeNo,
-  //     skillFourYes: skillFourYes,
-  //     skillFourNo: skillFourNo,
-  //   };
-  //   if (
-  //     skillOneYes === "Yes" &&
-  //     skillTwoYes === "Yes" &&
-  //     skillThreeYes === "Yes" &&
-  //     skillFourYes === "Yes"
-  //   ) {
-  //   }
-  //   const res = await axios.post(
-  //     "http://localhost:3001/evaluations",
-  //     athleteResult
-  //   );
-  //   console.log(res);
-  // };
-
-  /*********** Made a new state in order to show the message on submit of the form, the setSubmitted(true) is within the showFormMessage function **********/
-
-  /********** This function sets the display of the message to true on submit of the form , i also removed the (e) from this function as the event now falls on the registrationAndMessage function */
-
-  /****** When the form submits this function is called, i combined the showFormMessage and registerUser function in order to carry out two actions at once. The (e) is placed on this function as this is the one we call onSubmit of the form */
   const registrationAndMessage = async (e) => {
     e.preventDefault();
     // setSubmitted(true);
@@ -264,7 +146,7 @@ const RegistrationForm = () => {
         level: level,
       };
       const res = await axios.post(
-        "http://localhost:3001/evaluations",
+        "https://gotham-backend.herokuapp.com/evaluations",
         newUser
       );
       console.log(res);
@@ -287,7 +169,7 @@ const RegistrationForm = () => {
         level: "Beginner",
       };
       const res = await axios.post(
-        "http://localhost:3001/evaluations",
+        "https://gotham-backend.herokuapp.com/evaluations",
         newUser
       );
       console.log(res)
@@ -297,7 +179,7 @@ const RegistrationForm = () => {
   return (
     <div>
       <section className="logo-section">
-        <img src={logo} alt="logo" width="200px" />
+        <img src={newlogo} alt="logo" width="200px" />
       </section>
       <section className="title-section">
         <h1> GOTHAM GYMNASTICS</h1>
