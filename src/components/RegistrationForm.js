@@ -57,23 +57,23 @@ const RegistrationForm = () => {
   /**** removed the (e) from the register user because the event now goes to the registerAndMessage function onSubmit */
 
   /********************************** RADIO button State code **************************/
-  const [skillOneYes, setSkillOneYes] = useState("");
+  const [skillOne, setSkillOne] = useState("");
   // const [skillOneNo, setSkillOneNo] = useState("");
-  const [skillTwoYes, setSkillTwoYes] = useState("");
+  const [skillTwo, setSkillTwo] = useState("");
   // const [skillTwoNo, setSkillTwoNo] = useState("");
-  const [skillThreeYes, setSkillThreeYes] = useState("");
+  const [skillThree, setSkillThree] = useState("");
   // const [skillThreeNo, setSkillThreeNo] = useState("");
-  const [skillFourYes, setSkillFourYes] = useState("");
+  const [skillFour, setSkillFour] = useState("");
   // const [skillFourNo, setSkillFourNo] = useState("");
-  const[skillFiveYes,setSkillFiveYes] = useState("");
+  const[skillFive,setSkillFive] = useState("");
   // const [skillFiveNo,setSkillFiveNo] = useState("");
-  const [skillSixYes,setSkillSixYes] = useState("");
+  const [skillSix,setSkillSix] = useState("");
   // const [skillSixNo, setSkillSixNo] = useState("");
 
-  /***** recording first skill yes or no ********/
+  /***** recording first skill  or no ********/
 
-  const recordSkillOneYes = (e) => {
-    setSkillOneYes(e.target.value);
+  const recordSkillOne = (e) => {
+    setSkillOne(e.target.value);
     console.log(e.target.value);
   };
 
@@ -82,10 +82,10 @@ const RegistrationForm = () => {
   //   console.log(e.target.value);
   // };
 
-  /****** recording second skill yes or no *******/
+  /****** recording second skill  or no *******/
 
-  const recordSkillTwoYes = (e) => {
-    setSkillTwoYes(e.target.value);
+  const recordSkillTwo = (e) => {
+    setSkillTwo(e.target.value);
     console.log(e.target.value);
   };
 
@@ -94,10 +94,10 @@ const RegistrationForm = () => {
   //   console.log(e.target.value);
   // };
 
-  /********** recording third skill yes or no **********/
+  /********** recording third skill  or no **********/
 
-  const recordSkillThreeYes = (e) => {
-    setSkillThreeYes(e.target.value);
+  const recordSkillThree = (e) => {
+    setSkillThree(e.target.value);
     console.log(e.target.value);
   };
 
@@ -106,22 +106,31 @@ const RegistrationForm = () => {
   //   console.log(e.target.value);
   // };
 
-  /*********** recording fourth skill yes or no *********/
+  /*********** recording fourth skill  or no *********/
 
-  const recordSkillFourYes = (e) => {
-    setSkillFourYes(e.target.value);
+  const recordSkillFour = (e) => {
+    setSkillFour(e.target.value);
     console.log(e.target.value);
   };
 
 
 
-  const recordSkillFiveYes = (e) => {
-    setSkillFiveYes(e.target.value)
+  const recordSkillFive = (e) => {
+    setSkillFive(e.target.value)
   }
 
  
-  const recordSkillSixYes = (e) => {
-    setSkillSixYes(e.target.value)
+  const recordSkillSix = (e) => {
+    setSkillSix(e.target.value)
+  }
+
+  const resetAnswers = () => {
+    setSkillOne("")
+     setSkillTwo("")
+      setSkillThree("")
+       setSkillFour("")
+        setSkillFive("")
+         setSkillSix("")
   }
 
   const registrationAndMessage = async (e) => {
@@ -129,12 +138,12 @@ const RegistrationForm = () => {
     // setSubmitted(true);
 
     if (
-      skillOneYes === "Yes" &&
-      skillTwoYes === "Yes" &&
-      skillThreeYes === "Yes" &&
-      skillFourYes === "Yes" &&
-      skillFiveYes === "Yes" &&
-      skillSixYes === "Yes"
+      skillOne === "Yes" &&
+      skillTwo === "Yes" &&
+      skillThree === "Yes" &&
+      skillFour === "Yes" &&
+      skillFive === "Yes" &&
+      skillSix === "Yes"
     ) {
       setMessage(`User is registered and their level is ${level}`);
       // If they are IGC, save this information in the database
@@ -156,8 +165,10 @@ const RegistrationForm = () => {
       setParentName("");
     } else if (level === "IGC") {
       setLevel("Advanced");
+      resetAnswers()
     } else if (level === "Advanced") {
       setLevel("Intermediate");
+      resetAnswers()
     } else {
       setLevel("Beginner");
       setMessage(`User is registered and their level is ${level}`);
@@ -258,7 +269,7 @@ const RegistrationForm = () => {
               name="skill-one"
               id="skill-one-yes"
               value="Yes"
-              onChange={recordSkillOneYes}
+              onChange={recordSkillOne}
             />
             <label>Yes</label>
             <input
@@ -267,7 +278,7 @@ const RegistrationForm = () => {
               name="skill-one"
               id="skill-one-no"
               value="No"
-              // onChange={recordSkillOneNo}
+              onChange={recordSkillOne}
             />
             <label>No</label>
             <h3>Handstand forward-roll</h3>
@@ -277,7 +288,7 @@ const RegistrationForm = () => {
               name="skill-two"
               id="skill-two-yes"
               value="Yes"
-              onChange={recordSkillTwoYes}
+              onChange={recordSkillTwo}
             />
             <label>Yes</label>
             <input
@@ -286,7 +297,7 @@ const RegistrationForm = () => {
               name="skill-two"
               id="skill-two-no"
               value="No"
-              // onChange={recordSkillTwoNo}
+              onChange={recordSkillTwo}
             />
             <label>No</label>
             <h3>Round off/ backhand-spring</h3>
@@ -296,7 +307,7 @@ const RegistrationForm = () => {
               name="skill-three"
               id="skill-three-yes"
               value="Yes"
-              onChange={recordSkillThreeYes}
+              onChange={recordSkillThree}
             />
             <label>Yes</label>
             <input
@@ -305,7 +316,7 @@ const RegistrationForm = () => {
               name="skill-three"
               id="skill-three-no"
               value="No"
-              // onChange={recordSkillThreeNo}
+              onChange={recordSkillThree}
             />
             <label>No</label>
             <h3>Pull-over</h3>
@@ -315,7 +326,7 @@ const RegistrationForm = () => {
               name="skill-four"
               id="skill-four-yes"
               value="Yes"
-              onChange={recordSkillFourYes}
+              onChange={recordSkillFour}
             />
             <label>Yes</label>
             <input
@@ -324,7 +335,7 @@ const RegistrationForm = () => {
               name="skill-four"
               id="skill-four-no"
               value="No"
-              // onChange={recordSkillFourNo}
+              onChange={recordSkillFour}
             />
             <label>No</label>
             <h3>Handstand flat back</h3>
@@ -334,7 +345,7 @@ const RegistrationForm = () => {
               name="skill-five"
               id="skill-five-yes"
               value="Yes"
-              onChange={recordSkillFiveYes}
+              onChange={recordSkillFive}
             />
             <label>Yes</label>
             <input
@@ -343,7 +354,7 @@ const RegistrationForm = () => {
               name="skill-five"
               id="skill-five-no"
               value="No"
-              // onChange={recordSkillFiveNo}
+              onChange={recordSkillFive}
             />
             <label>No</label>
             <h3>Full handstand on beam</h3>
@@ -353,7 +364,7 @@ const RegistrationForm = () => {
               name="skill-six"
               id="skill-six-yes"
               value="Yes"
-              onChange={recordSkillSixYes}
+              onChange={recordSkillSix}
             />
             <label>Yes</label>
             <input
@@ -362,7 +373,7 @@ const RegistrationForm = () => {
               name="skill-six"
               id="skill-six-no"
               value="No"
-              // onChange={recordSkillSixNo}
+              onChange={recordSkillSix}
             />
             <label>No</label>
             <br />
@@ -378,7 +389,7 @@ const RegistrationForm = () => {
               name="skill-one"
               id="skill-one-yes"
               value="Yes"
-              onChange={recordSkillOneYes}
+              onChange={recordSkillOne}
             />
             <label>Yes</label>
             <input
@@ -387,7 +398,7 @@ const RegistrationForm = () => {
               name="skill-one"
               id="skill-one-no"
               value="No"
-              // onChange={recordSkillOneNo}
+              onChange={recordSkillOne}
             />
             <label>No</label>
             <h3>Round off backhandspring</h3>
@@ -397,7 +408,7 @@ const RegistrationForm = () => {
               name="skill-two"
               id="skill-two-yes"
               value="Yes"
-              onChange={recordSkillTwoYes}
+              onChange={recordSkillTwo}
             />
             <label>Yes</label>
             <input
@@ -406,7 +417,7 @@ const RegistrationForm = () => {
               name="skill-two"
               id="skill-two-no"
               value="No"
-              // onChange={recordSkillTwoNo}
+              onChange={recordSkillTwo}
             />
             <label>No</label>
             <h3>Front handspring</h3>
@@ -416,7 +427,7 @@ const RegistrationForm = () => {
               name="skill-three"
               id="skill-three-yes"
               value="Yes"
-              onChange={recordSkillThreeYes}
+              onChange={recordSkillThree}
             />
             <label>Yes</label>
             <input
@@ -425,7 +436,7 @@ const RegistrationForm = () => {
               name="skill-three"
               id="skill-three-no"
               value="No"
-              // onChange={recordSkillThreeNo}
+              onChange={recordSkillThree}
             />
             <label>No</label>
             <h3>Front Tuck</h3>
@@ -435,7 +446,7 @@ const RegistrationForm = () => {
               name="skill-four"
               id="skill-four-yes"
               value="Yes"
-              onChange={recordSkillFourYes}
+              onChange={recordSkillFour}
             />
             <label>Yes</label>
             <input
@@ -444,7 +455,7 @@ const RegistrationForm = () => {
               name="skill-four"
               id="skill-four-no"
               value="No"
-              // onChange={recordSkillFourNo}
+              onChange={recordSkillFour}
             />
             <label>No</label>
             <h3>Cast back-hipcircle</h3>
@@ -454,7 +465,7 @@ const RegistrationForm = () => {
               name="skill-five"
               id="skill-five-yes"
               value="Yes"
-              onChange={recordSkillFiveYes}
+              onChange={recordSkillFive}
             />
             <label>Yes</label>
             <input
@@ -463,7 +474,7 @@ const RegistrationForm = () => {
               name="skill-five"
               id="skill-five-no"
               value="No"
-              // onChange={recordSkillFiveNo}
+              onChange={recordSkillFive}
             />
             <label>No</label>
             <h3>HandStand & SideHandstand on beam</h3>
@@ -473,7 +484,7 @@ const RegistrationForm = () => {
               name="skill-six"
               id="skill-six-yes"
               value="Yes"
-              onChange={recordSkillSixYes}
+              onChange={recordSkillSix}
             />
             <label>Yes</label>
             <input
@@ -482,7 +493,7 @@ const RegistrationForm = () => {
               name="skill-six"
               id="skill-six-no"
               value="No"
-              // onChange={recordSkillSixNo}
+              onChange={recordSkillSix}
             />
             <label>No</label>
             <br />
@@ -498,7 +509,7 @@ const RegistrationForm = () => {
               name="skill-one"
               id="skill-one-yes"
               value="Yes"
-              onChange={recordSkillOneYes}
+              onChange={recordSkillOne}
             />
             <label>Yes</label>
             <input
@@ -507,7 +518,7 @@ const RegistrationForm = () => {
               name="skill-one"
               id="skill-one-no"
               value="No"
-              // onChange={recordSkillOneNo}
+              onChange={recordSkillOne}
             />
             <label>No</label>
             <h3>Dive Rolls</h3>
@@ -517,7 +528,7 @@ const RegistrationForm = () => {
               name="skill-two"
               id="skill-two-yes"
               value="Yes"
-              onChange={recordSkillTwoYes}
+              onChange={recordSkillTwo}
             />
             <label>Yes</label>
             <input
@@ -526,7 +537,7 @@ const RegistrationForm = () => {
               name="skill-two"
               id="skill-two-no"
               value="No"
-              // onChange={recordSkillTwoNo}
+              onChange={recordSkillTwo}
             />
             <label>No</label>
             <h3>Floor bar squat-on into a safety stop</h3>
@@ -536,7 +547,7 @@ const RegistrationForm = () => {
               name="skill-three"
               id="skill-three-yes"
               value="Yes"
-              onChange={recordSkillThreeYes}
+              onChange={recordSkillThree}
             />
             <label>Yes</label>
             <input
@@ -545,7 +556,7 @@ const RegistrationForm = () => {
               name="skill-three"
               id="skill-three-no"
               value="No"
-              // onChange={recordSkillThreeNo}
+              onChange={recordSkillThree}
             />
             <label>No</label>
             <h3>Handstand bridge kick-over</h3>
@@ -555,7 +566,7 @@ const RegistrationForm = () => {
               name="skill-four"
               id="skill-four-yes"
               value="Yes"
-              onChange={recordSkillFourYes}
+              onChange={recordSkillFour}
             />
             <label>Yes</label>
             <input
@@ -564,7 +575,7 @@ const RegistrationForm = () => {
               name="skill-four"
               id="skill-four-no"
               value="No"
-              // onChange={recordSkillFourNo}
+              onChange={recordSkillFour}
             />
             <label>No</label>
             <h3>Tuck jump onto a vault</h3>
@@ -574,7 +585,7 @@ const RegistrationForm = () => {
               name="skill-five"
               id="skill-five-yes"
               value="Yes"
-              onChange={recordSkillFiveYes}
+              onChange={recordSkillFive}
             />
             <label>Yes</label>
             <input
@@ -583,7 +594,7 @@ const RegistrationForm = () => {
               name="skill-five"
               id="skill-five-no"
               value="No"
-              // onChange={recordSkillFiveNo}
+              onChange={recordSkillFive}
             />
             <label>No</label>
             <h3>Straight/Tuck/Straddle Jump on trampoline</h3>
@@ -593,7 +604,7 @@ const RegistrationForm = () => {
               name="skill-six"
               id="skill-six-yes"
               value="Yes"
-              onChange={recordSkillSixYes}
+              onChange={recordSkillSix}
             />
             <label>Yes</label>
             <input
@@ -602,7 +613,7 @@ const RegistrationForm = () => {
               name="skill-six"
               id="skill-six-no"
               value="No"
-              // onChange={recordSkillSixNo}
+              onChange={recordSkillSix}
             />
             <label>No</label>
             <br />

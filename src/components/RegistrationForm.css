@@ -54,7 +54,11 @@ text-align: left;
 }
 
 .success-message{
-    margin: 12px 24px;
+    padding: 12px 24px;
+    background-color: rgb(106, 52, 144,1);
+    color:white;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 input[type="radio"]{
