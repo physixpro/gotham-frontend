@@ -116,3 +116,29 @@ input[type="radio"]{
 #trademark{
     color:white;
 }
+
+
+@media only screen and (max-width: 400px) {
+  
+
+
+
+.form-input{
+ 
+    width: 130px ;
+    margin-top: 5px;
+    padding: 10px;
+  
+   
+}
+
+.form-label{
+ margin-right:10px;
+   color:white;
+   font-size:12px;
+   margin-left:10px;
+   margin-right:1px;
+}
+
+
+  }
