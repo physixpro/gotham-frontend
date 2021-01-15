@@ -194,7 +194,7 @@ const RegistrationForm = () => {
       </section>
       <section className="title-section">
         <h1> GOTHAM GYMNASTICS</h1>
-        <h2>Skill Assesment</h2>
+        <h2>Skill Assessment</h2>
       </section>
 
       {message.length > 0 ? (
@@ -259,7 +259,7 @@ const RegistrationForm = () => {
 
         {/* short circuit evaluation; is submitted true? if so run the code to the right of the && */}
 
-        <h2>{level} Assesment</h2>
+        <h2>{level} Assessment</h2>
         {level === "IGC" ? (
           <div>
             <h3 className="skill-style">Bridge kick-over</h3>
