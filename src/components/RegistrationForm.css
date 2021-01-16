@@ -124,11 +124,11 @@ input[type="radio"]{
 
 .form-input{
  
-    width: 100px ;
+    width: 60px ;
     margin-top: 5px;
-    margin-right:3px;
+    
     padding: 15px 10x;
-    font-size: 10px;
+    font-size: 9.5px;
 
 }
 
