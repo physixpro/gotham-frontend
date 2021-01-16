@@ -206,7 +206,7 @@ const RegistrationForm = () => {
       <form className="registration-form" onSubmit={registrationAndMessage}>
         <section className="input-container">
           <label className="form-label">
-            Coach's Name:
+            Coach Name:
             <input
               required
               className="form-input"

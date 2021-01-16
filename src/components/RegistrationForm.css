@@ -118,25 +118,29 @@ input[type="radio"]{
 }
 
 
-@media only screen and (min-width: 414px) {
+@media screen and (max-width:380px){
   
 
 
 .form-input{
  
-    width: 130px ;
+    width: 100px ;
     margin-top: 5px;
-    padding: 10px;
+    margin-right:3px;
+    padding: 15px 10x;
+    font-size: 10px;
 
 }
 
 .form-label{
- margin-right:10px;
    color:white;
-   font-size:10px;
-   margin-left:10px;
-   margin-right:1px;
+   font-size:12px;
+   
+   
 }
 
 
   }
+
+  
+  
