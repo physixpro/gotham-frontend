@@ -14,6 +14,7 @@ Research Arrays; array methods.
 Find method, (google 'array.find js') <-----------------
 map method
 filter method
+*filters out the false values in the specific array i.e. !== .
 
 
 Homework - if we want to extract our different forms into their own files then we need to learn about props(props are how we share information from one component to another.)
@@ -21,3 +22,12 @@ Homework - if we want to extract our different forms into their own files then w
 
 
 asynchronous programming - key topic in js. e.g. async await.
+
+
+1/19/2021 homework
+
+1. use the .find method to find the specific user that we are editing , user that we clicked the edit button, and set the currently edited user state with that user/person.
+
+2. pass that currenlty edited user state to the <EditForm /> via props.
+
+3. Receive the currently edited user props in the <EditForm />
