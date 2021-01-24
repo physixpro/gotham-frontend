@@ -91,7 +91,7 @@ return user._id === userId;
       </form>
       {showEditForm ? (
         //Attempting to pass the state as a prop here
-        <EditForm currentEditUser={this.state.currentEditUser}/>
+        <EditForm currentEditUser={currentEditUser}/>
       ) : (
         users.map((user) => (
           <div key={user._id}>
