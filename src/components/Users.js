@@ -57,12 +57,13 @@ const Users = () => {
 // function that shows the EditForm component on button Click and finds a specific user using the .find array method stored in the updatedEditUser
 
   const toggleEditForm = (userId) => {
+    
     setShowEditForm(true);
   const updatedEditUser = users.find((user) => {
 return user._id === userId;
   })
   setCurrentEditUser(updatedEditUser)
-  console.log(updatedEditUser)
+  
   };
 
   
@@ -75,7 +76,7 @@ return user._id === userId;
           name="name"
           placeholder="name"
           onChange={recordName}
-          value={name}
+          
           required
         />
         <input
@@ -89,7 +90,8 @@ return user._id === userId;
         <button tyep="submit">Post User</button>
       </form>
       {showEditForm ? (
-        <EditForm />
+        //Attempting to pass the state as a prop here
+        <EditForm currentEditUser={this.state.currentEditUser}/>
       ) : (
         users.map((user) => (
           <div key={user._id}>
