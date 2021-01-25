@@ -35,7 +35,7 @@ const Users = () => {
   
     const userBody = {
       name: name,
-      email: name,
+      email: email,
     };
     
     const res = await axios.post("http://localhost:3001/evaluations", userBody);
@@ -66,6 +66,7 @@ return user._id === userId;
   
   };
 
+  console.log(currentEditUser)
   
 
   return (
@@ -91,7 +92,8 @@ return user._id === userId;
       </form>
       {showEditForm ? (
         //Attempting to pass the state as a prop here
-        <EditForm currentEditUser={currentEditUser}/>
+        <EditForm currentEditUser={currentEditUser} userState={users}/>
+        
       ) : (
         users.map((user) => (
           <div key={user._id}>
