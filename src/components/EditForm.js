@@ -1,25 +1,29 @@
 import React,{useState} from 'react'
-
+import axios from 'axios'
  const EditForm = (props) => {
 
-    const[currentEdit,setCurrentEdit]=useState(props.users)
+    const[currentEdit,setCurrentEdit]=useState()
 
     const recordCurrentEdit = (e) => {
-        e.preventDefault()
         setCurrentEdit(e.target.defaultValue)
         console.log(e.target.value)
     }
 
 
+    
 
+    const editedUser = async (userId) => {
 
-    const editedUser = (e) => {
-        e.preventDefault()  
-        setCurrentEdit(currentEdit)
+        const editedUserBody = {
+            //possible error in this area to be fixed
+            name: currentEdit.name
+        };
+      const res = await axios.put  (`http://localhost:3001/evaluations/${userId}`,editedUserBody)
+      console.log(res)
     }
     
-    console.log(currentEdit)
     
+  
     return (
         <div>
             <form onSubmit={editedUser}>
