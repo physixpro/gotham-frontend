@@ -31,3 +31,13 @@ asynchronous programming - key topic in js. e.g. async await.
 2. pass that currenlty edited user state to the <EditForm /> via props.
 
 3. Receive the currently edited user props in the <EditForm />
+
+1/26/2021
+
+props is the ability to pass state around from one component to another.
+
+*Info in one component that another component needs*
+
+Rules for passing props -
+
+1) You can only pass props from a parent component to a child component.

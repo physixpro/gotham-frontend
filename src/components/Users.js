@@ -32,12 +32,11 @@ const Users = () => {
   console.log(users);
 
   const postUser = async () => {
-  
     const userBody = {
       name: name,
       email: email,
     };
-    
+
     const res = await axios.post("http://localhost:3001/evaluations", userBody);
     console.log(res);
     setName("");
@@ -54,20 +53,20 @@ const Users = () => {
     setUsers(updatedUsers);
     console.log(res);
   };
-// function that shows the EditForm component on button Click and finds a specific user using the .find array method stored in the updatedEditUser
+  // function that shows the EditForm component on button Click and finds a specific user using the .find array method stored in the updatedEditUser
 
   const toggleEditForm = (userId) => {
-    
     setShowEditForm(true);
-  const updatedEditUser = users.find((user) => {
-return user._id === userId;
-  })
-  setCurrentEditUser(updatedEditUser)
-  
+    // Find / Filter
+    // Filter says if we return true, we keep that value, else we filter it ou
+    // Find says if we return true from this function, we have found that value
+    const updatedEditUser = users.find((user) => {
+      return user._id === userId;
+    });
+    setCurrentEditUser(updatedEditUser);
   };
 
-  console.log(currentEditUser)
-  
+  console.log(currentEditUser);
 
   return (
     <div>
@@ -77,7 +76,6 @@ return user._id === userId;
           name="name"
           placeholder="name"
           onChange={recordName}
-          
           required
         />
         <input
@@ -88,12 +86,16 @@ return user._id === userId;
           value={email}
           required
         />
-        <button tyep="submit">Post User</button>
+        <button type="submit">Post User</button>
       </form>
       {showEditForm ? (
         //Attempting to pass the state as a prop here
-        <EditForm currentEditUser={currentEditUser} />
-        
+        <EditForm
+          currentEditUser={currentEditUser}
+          setShowEditForm={setShowEditForm}
+          users={users}
+          setUsers={setUsers}
+        />
       ) : (
         users.map((user) => (
           <div key={user._id}>
