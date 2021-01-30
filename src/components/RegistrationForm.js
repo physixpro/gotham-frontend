@@ -8,6 +8,13 @@ const RegistrationForm = () => {
   const [level, setLevel] = useState("IGC");
 
   const [message, setMessage] = useState("");
+
+  const[email,setEmail] = useState("")
+
+  const recordEmail = (e) => {
+    setEmail(e.target.value)
+    console.log(e.target.value)
+  }
   // sets state to advance message onSubmit
 
   // const [advMessage, setAdvMessage] = useState("");
@@ -65,9 +72,9 @@ const RegistrationForm = () => {
   // const [skillThreeNo, setSkillThreeNo] = useState("");
   const [skillFour, setSkillFour] = useState("");
   // const [skillFourNo, setSkillFourNo] = useState("");
-  const[skillFive,setSkillFive] = useState("");
+  const [skillFive, setSkillFive] = useState("");
   // const [skillFiveNo,setSkillFiveNo] = useState("");
-  const [skillSix,setSkillSix] = useState("");
+  const [skillSix, setSkillSix] = useState("");
   // const [skillSixNo, setSkillSixNo] = useState("");
 
   /***** recording first skill  or no ********/
@@ -113,25 +120,22 @@ const RegistrationForm = () => {
     console.log(e.target.value);
   };
 
-
-
   const recordSkillFive = (e) => {
-    setSkillFive(e.target.value)
-  }
+    setSkillFive(e.target.value);
+  };
 
- 
   const recordSkillSix = (e) => {
-    setSkillSix(e.target.value)
-  }
+    setSkillSix(e.target.value);
+  };
 
   const resetAnswers = () => {
-    setSkillOne("")
-     setSkillTwo("")
-      setSkillThree("")
-       setSkillFour("")
-        setSkillFive("")
-         setSkillSix("")
-  }
+    setSkillOne("");
+    setSkillTwo("");
+    setSkillThree("");
+    setSkillFour("");
+    setSkillFive("");
+    setSkillSix("");
+  };
 
   const registrationAndMessage = async (e) => {
     e.preventDefault();
@@ -153,6 +157,7 @@ const RegistrationForm = () => {
         date: date,
         parentName: parentName,
         level: level,
+        email: email
       };
       const res = await axios.post(
         "https://gotham-backend.herokuapp.com/evaluations",
@@ -165,10 +170,10 @@ const RegistrationForm = () => {
       setParentName("");
     } else if (level === "IGC") {
       setLevel("Advanced");
-      resetAnswers()
+      resetAnswers();
     } else if (level === "Advanced") {
       setLevel("Intermediate");
-      resetAnswers()
+      resetAnswers();
     } else {
       setLevel("Beginner");
       setMessage(`User is registered and their level is ${level}`);
@@ -177,13 +182,15 @@ const RegistrationForm = () => {
         athleteName: athleteName,
         date: date,
         parentName: parentName,
+        email: email,
         level: "Beginner",
+        
       };
       const res = await axios.post(
         "https://gotham-backend.herokuapp.com/evaluations",
         newUser
       );
-      console.log(res)
+      console.log(res);
     }
   };
 
@@ -201,434 +208,445 @@ const RegistrationForm = () => {
         <div className="success-message">{message}</div>
       ) : null}
 
+      <section className="form-background-image">
+        <form className="registration-form" onSubmit={registrationAndMessage}>
+          <section className="input-container">
+            <label className="form-label">
+              Coach Name:
+              <input
+                required
+                className="form-input"
+                type="text"
+                name="coach name"
+                placeholder="Enter Name"
+                onChange={recordCoachName}
+                value={coachName}
+              />
+            </label>
+            <label className="form-label">
+              Date:
+              <input
+                required
+                className="form-input"
+                type="date"
+                name="date"
+                onChange={recordDate}
+                value={date}
+              />
+            </label>
+            <label className="form-label">
+              Email:
+              <input
+                required
+                type="email"
+                name="email"
+                placeholder="enter email"
+                onChange={recordEmail}
+                value={email}
+              />
+            </label>
+          </section>
 
-      <section className = "form-background-image"> 
-      <form className="registration-form" onSubmit={registrationAndMessage}>
-        <section className="input-container">
-          <label className="form-label">
-            Coach Name:
-            <input
-              required
-              className="form-input"
-              type="text"
-              name="coach name"
-              placeholder="Enter Name"
-              onChange={recordCoachName}
-              value={coachName}
-            />
-          </label>
-          <label className="form-label">
-            Date:
-            <input
-              required
-              className="form-input"
-              type="date"
-              name="date"
-              onChange={recordDate}
-              value={date}
-            />
-          </label>
-        </section>
+          <section className="input-container">
+            <label className="form-label">
+              Athlete Name:
+              <input
+                required
+                className="form-input"
+                type="text"
+                name=" athlete name"
+                placeholder="Athlete Name"
+                onChange={recordAthleteName}
+                value={athleteName}
+              />
+            </label>
+            <label className="form-label">
+              Parent/Guardian Name:
+              <input
+                required
+                className="form-input"
+                type="text"
+                name=" parent name"
+                placeholder="Parent Name"
+                onChange={recordParentName}
+                value={parentName}
+              />
+            </label>
+          </section>
 
-        <section className="input-container">
-          <label className="form-label">
-            Athlete Name:
-            <input
-              required
-              className="form-input"
-              type="text"
-              name=" athlete name"
-              placeholder="Athlete Name"
-              onChange={recordAthleteName}
-              value={athleteName}
-            />
-          </label>
-          <label className="form-label">
-            Parent/Guardian Name:
-            <input
-              required
-              className="form-input"
-              type="text"
-              name=" parent name"
-              placeholder="Parent Name"
-              onChange={recordParentName}
-              value={parentName}
-            />
-          </label>
-        </section>
+          {/* short circuit evaluation; is submitted true? if so run the code to the right of the && */}
 
-        {/* short circuit evaluation; is submitted true? if so run the code to the right of the && */}
-
-        <h2>{level} Assessment</h2>
-        {level === "IGC" ? (
-          <div>
-            <h3 className="skill-style">Bridge kick-over</h3>
-            <input
-              required
-              type="radio"
-              name="skill-one"
-              id="skill-one-yes"
-              value="Yes"
-              onChange={recordSkillOne}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-one"
-              id="skill-one-no"
-              value="No"
-              onChange={recordSkillOne}
-            />
-            <label>No</label>
-            <h3>Handstand forward-roll</h3>
-            <input
-              required
-              type="radio"
-              name="skill-two"
-              id="skill-two-yes"
-              value="Yes"
-              onChange={recordSkillTwo}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-two"
-              id="skill-two-no"
-              value="No"
-              onChange={recordSkillTwo}
-            />
-            <label>No</label>
-            <h3>Round off/ backhand-spring</h3>
-            <input
-              required
-              type="radio"
-              name="skill-three"
-              id="skill-three-yes"
-              value="Yes"
-              onChange={recordSkillThree}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-three"
-              id="skill-three-no"
-              value="No"
-              onChange={recordSkillThree}
-            />
-            <label>No</label>
-            <h3>Pull-over</h3>
-            <input
-              required
-              type="radio"
-              name="skill-four"
-              id="skill-four-yes"
-              value="Yes"
-              onChange={recordSkillFour}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-four"
-              id="skill-four-no"
-              value="No"
-              onChange={recordSkillFour}
-            />
-            <label>No</label>
-            <h3>Handstand flat back</h3>
-            <input
-              required
-              type="radio"
-              name="skill-five"
-              id="skill-five-yes"
-              value="Yes"
-              onChange={recordSkillFive}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-five"
-              id="skill-five-no"
-              value="No"
-              onChange={recordSkillFive}
-            />
-            <label>No</label>
-            <h3>Full handstand on beam</h3>
-            <input
-              required
-              type="radio"
-              name="skill-six"
-              id="skill-six-yes"
-              value="Yes"
-              onChange={recordSkillSix}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-six"
-              id="skill-six-no"
-              value="No"
-              onChange={recordSkillSix}
-            />
-            <label>No</label>
-            <br />
-            <br />
-          </div>
-        ) : null}
-        {level === "Advanced" ? (
-          <div>
-            <h3>Back-handspring</h3>
-            <input
-              required
-              type="radio"
-              name="skill-one"
-              id="skill-one-yes"
-              value="Yes"
-              onChange={recordSkillOne}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-one"
-              id="skill-one-no"
-              value="No"
-              onChange={recordSkillOne}
-            />
-            <label>No</label>
-            <h3>Round off backhandspring</h3>
-            <input
-              required
-              type="radio"
-              name="skill-two"
-              id="skill-two-yes"
-              value="Yes"
-              onChange={recordSkillTwo}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-two"
-              id="skill-two-no"
-              value="No"
-              onChange={recordSkillTwo}
-            />
-            <label>No</label>
-            <h3>Front handspring</h3>
-            <input
-              required
-              type="radio"
-              name="skill-three"
-              id="skill-three-yes"
-              value="Yes"
-              onChange={recordSkillThree}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-three"
-              id="skill-three-no"
-              value="No"
-              onChange={recordSkillThree}
-            />
-            <label>No</label>
-            <h3>Front Tuck</h3>
-            <input
-              required
-              type="radio"
-              name="skill-four"
-              id="skill-four-yes"
-              value="Yes"
-              onChange={recordSkillFour}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-four"
-              id="skill-four-no"
-              value="No"
-              onChange={recordSkillFour}
-            />
-            <label>No</label>
-            <h3>Cast back-hipcircle</h3>
-            <input
-              required
-              type="radio"
-              name="skill-five"
-              id="skill-five-yes"
-              value="Yes"
-              onChange={recordSkillFive}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-five"
-              id="skill-five-no"
-              value="No"
-              onChange={recordSkillFive}
-            />
-            <label>No</label>
-            <h3>HandStand & SideHandstand on beam</h3>
-            <input
-              required
-              type="radio"
-              name="skill-six"
-              id="skill-six-yes"
-              value="Yes"
-              onChange={recordSkillSix}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-six"
-              id="skill-six-no"
-              value="No"
-              onChange={recordSkillSix}
-            />
-            <label>No</label>
-            <br />
-            <br />
-          </div>
-        ) : null}
-        {level === "Intermediate" ? (
-          <div>
-            <h3>Backward roll to pushup position</h3>
-            <input
-              required
-              type="radio"
-              name="skill-one"
-              id="skill-one-yes"
-              value="Yes"
-              onChange={recordSkillOne}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-one"
-              id="skill-one-no"
-              value="No"
-              onChange={recordSkillOne}
-            />
-            <label>No</label>
-            <h3>Dive Rolls</h3>
-            <input
-              required
-              type="radio"
-              name="skill-two"
-              id="skill-two-yes"
-              value="Yes"
-              onChange={recordSkillTwo}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-two"
-              id="skill-two-no"
-              value="No"
-              onChange={recordSkillTwo}
-            />
-            <label>No</label>
-            <h3>Floor bar squat-on into a safety stop</h3>
-            <input
-              required
-              type="radio"
-              name="skill-three"
-              id="skill-three-yes"
-              value="Yes"
-              onChange={recordSkillThree}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-three"
-              id="skill-three-no"
-              value="No"
-              onChange={recordSkillThree}
-            />
-            <label>No</label>
-            <h3>Handstand bridge kick-over</h3>
-            <input
-              required
-              type="radio"
-              name="skill-four"
-              id="skill-four-yes"
-              value="Yes"
-              onChange={recordSkillFour}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-four"
-              id="skill-four-no"
-              value="No"
-              onChange={recordSkillFour}
-            />
-            <label>No</label>
-            <h3>Tuck jump onto a vault</h3>
-            <input
-              required
-              type="radio"
-              name="skill-five"
-              id="skill-five-yes"
-              value="Yes"
-              onChange={recordSkillFive}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-five"
-              id="skill-five-no"
-              value="No"
-              onChange={recordSkillFive}
-            />
-            <label>No</label>
-            <h3>Straight/Tuck/Straddle Jump on trampoline</h3>
-            <input
-              required
-              type="radio"
-              name="skill-six"
-              id="skill-six-yes"
-              value="Yes"
-              onChange={recordSkillSix}
-            />
-            <label>Yes</label>
-            <input
-              required
-              type="radio"
-              name="skill-six"
-              id="skill-six-no"
-              value="No"
-              onChange={recordSkillSix}
-            />
-            <label>No</label>
-            <br />
-            <br />
-          </div>
-        ) : null}
-        <button className="form-button" type="submit">
-          Evaluate
-        </button>
-      </form>
-      <footer className="footer">
-<h5 id="gotham-footer">GOTHAM</h5>
-<h5 id="gymnastics-footer">GYMNASTICS</h5><div id="trademark">&trade;</div>
-<h7 id="brooklyn-footer">BROOKLYN</h7>
-      </footer>
+          <h2>{level} Assessment</h2>
+          {level === "IGC" ? (
+            <div>
+              <h3 className="skill-style">Bridge kick-over</h3>
+              <input
+                required
+                type="radio"
+                name="skill-one"
+                id="skill-one-yes"
+                value="Yes"
+                onChange={recordSkillOne}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-one"
+                id="skill-one-no"
+                value="No"
+                onChange={recordSkillOne}
+              />
+              <label>No</label>
+              <h3>Handstand forward-roll</h3>
+              <input
+                required
+                type="radio"
+                name="skill-two"
+                id="skill-two-yes"
+                value="Yes"
+                onChange={recordSkillTwo}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-two"
+                id="skill-two-no"
+                value="No"
+                onChange={recordSkillTwo}
+              />
+              <label>No</label>
+              <h3>Round off/ backhand-spring</h3>
+              <input
+                required
+                type="radio"
+                name="skill-three"
+                id="skill-three-yes"
+                value="Yes"
+                onChange={recordSkillThree}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-three"
+                id="skill-three-no"
+                value="No"
+                onChange={recordSkillThree}
+              />
+              <label>No</label>
+              <h3>Pull-over</h3>
+              <input
+                required
+                type="radio"
+                name="skill-four"
+                id="skill-four-yes"
+                value="Yes"
+                onChange={recordSkillFour}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-four"
+                id="skill-four-no"
+                value="No"
+                onChange={recordSkillFour}
+              />
+              <label>No</label>
+              <h3>Handstand flat back</h3>
+              <input
+                required
+                type="radio"
+                name="skill-five"
+                id="skill-five-yes"
+                value="Yes"
+                onChange={recordSkillFive}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-five"
+                id="skill-five-no"
+                value="No"
+                onChange={recordSkillFive}
+              />
+              <label>No</label>
+              <h3>Full handstand on beam</h3>
+              <input
+                required
+                type="radio"
+                name="skill-six"
+                id="skill-six-yes"
+                value="Yes"
+                onChange={recordSkillSix}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-six"
+                id="skill-six-no"
+                value="No"
+                onChange={recordSkillSix}
+              />
+              <label>No</label>
+              <br />
+              <br />
+            </div>
+          ) : null}
+          {level === "Advanced" ? (
+            <div>
+              <h3>Back-handspring</h3>
+              <input
+                required
+                type="radio"
+                name="skill-one"
+                id="skill-one-yes"
+                value="Yes"
+                onChange={recordSkillOne}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-one"
+                id="skill-one-no"
+                value="No"
+                onChange={recordSkillOne}
+              />
+              <label>No</label>
+              <h3>Round off backhandspring</h3>
+              <input
+                required
+                type="radio"
+                name="skill-two"
+                id="skill-two-yes"
+                value="Yes"
+                onChange={recordSkillTwo}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-two"
+                id="skill-two-no"
+                value="No"
+                onChange={recordSkillTwo}
+              />
+              <label>No</label>
+              <h3>Front handspring</h3>
+              <input
+                required
+                type="radio"
+                name="skill-three"
+                id="skill-three-yes"
+                value="Yes"
+                onChange={recordSkillThree}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-three"
+                id="skill-three-no"
+                value="No"
+                onChange={recordSkillThree}
+              />
+              <label>No</label>
+              <h3>Front Tuck</h3>
+              <input
+                required
+                type="radio"
+                name="skill-four"
+                id="skill-four-yes"
+                value="Yes"
+                onChange={recordSkillFour}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-four"
+                id="skill-four-no"
+                value="No"
+                onChange={recordSkillFour}
+              />
+              <label>No</label>
+              <h3>Cast back-hipcircle</h3>
+              <input
+                required
+                type="radio"
+                name="skill-five"
+                id="skill-five-yes"
+                value="Yes"
+                onChange={recordSkillFive}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-five"
+                id="skill-five-no"
+                value="No"
+                onChange={recordSkillFive}
+              />
+              <label>No</label>
+              <h3>HandStand & SideHandstand on beam</h3>
+              <input
+                required
+                type="radio"
+                name="skill-six"
+                id="skill-six-yes"
+                value="Yes"
+                onChange={recordSkillSix}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-six"
+                id="skill-six-no"
+                value="No"
+                onChange={recordSkillSix}
+              />
+              <label>No</label>
+              <br />
+              <br />
+            </div>
+          ) : null}
+          {level === "Intermediate" ? (
+            <div>
+              <h3>Backward roll to pushup position</h3>
+              <input
+                required
+                type="radio"
+                name="skill-one"
+                id="skill-one-yes"
+                value="Yes"
+                onChange={recordSkillOne}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-one"
+                id="skill-one-no"
+                value="No"
+                onChange={recordSkillOne}
+              />
+              <label>No</label>
+              <h3>Dive Rolls</h3>
+              <input
+                required
+                type="radio"
+                name="skill-two"
+                id="skill-two-yes"
+                value="Yes"
+                onChange={recordSkillTwo}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-two"
+                id="skill-two-no"
+                value="No"
+                onChange={recordSkillTwo}
+              />
+              <label>No</label>
+              <h3>Floor bar squat-on into a safety stop</h3>
+              <input
+                required
+                type="radio"
+                name="skill-three"
+                id="skill-three-yes"
+                value="Yes"
+                onChange={recordSkillThree}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-three"
+                id="skill-three-no"
+                value="No"
+                onChange={recordSkillThree}
+              />
+              <label>No</label>
+              <h3>Handstand bridge kick-over</h3>
+              <input
+                required
+                type="radio"
+                name="skill-four"
+                id="skill-four-yes"
+                value="Yes"
+                onChange={recordSkillFour}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-four"
+                id="skill-four-no"
+                value="No"
+                onChange={recordSkillFour}
+              />
+              <label>No</label>
+              <h3>Tuck jump onto a vault</h3>
+              <input
+                required
+                type="radio"
+                name="skill-five"
+                id="skill-five-yes"
+                value="Yes"
+                onChange={recordSkillFive}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-five"
+                id="skill-five-no"
+                value="No"
+                onChange={recordSkillFive}
+              />
+              <label>No</label>
+              <h3>Straight/Tuck/Straddle Jump on trampoline</h3>
+              <input
+                required
+                type="radio"
+                name="skill-six"
+                id="skill-six-yes"
+                value="Yes"
+                onChange={recordSkillSix}
+              />
+              <label>Yes</label>
+              <input
+                required
+                type="radio"
+                name="skill-six"
+                id="skill-six-no"
+                value="No"
+                onChange={recordSkillSix}
+              />
+              <label>No</label>
+              <br />
+              <br />
+            </div>
+          ) : null}
+          <button className="form-button" type="submit">
+            Evaluate
+          </button>
+        </form>
+        <footer className="footer">
+          <h5 id="gotham-footer">GOTHAM</h5>
+          <h5 id="gymnastics-footer">GYMNASTICS</h5>
+          <div id="trademark">&trade;</div>
+          <h7 id="brooklyn-footer">BROOKLYN</h7>
+        </footer>
       </section>
     </div>
   );
