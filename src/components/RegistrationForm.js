@@ -160,7 +160,8 @@ const RegistrationForm = () => {
         email: email
       };
       const res = await axios.post(
-        "https://gotham-backend.herokuapp.com/evaluations",
+        "http://localhost:3001/evaluations",
+        // "https://gotham-backend.herokuapp.com/evaluations",
         newUser
       );
       console.log(res);
@@ -168,6 +169,7 @@ const RegistrationForm = () => {
       setAthleteName("");
       setDate("");
       setParentName("");
+      setEmail("")
     } else if (level === "IGC") {
       setLevel("Advanced");
       resetAnswers();

@@ -41,3 +41,18 @@ props is the ability to pass state around from one component to another.
 Rules for passing props -
 
 1) You can only pass props from a parent component to a child component.
+
+
+1/30/2021
+
+we call it the try catch block!! 
+
+Whatever is in the 'try' block , it says " hey lets try to perform these async actions!" 
+
+IF everything runs, perfect we are good to go!
+
+BUT if there is an 'error' then that's where the catch block is going to run! 
+
+THEN the error param in the catch block contains all the details of this error. Which we can then use to notify the user of what went wrong.
+
+Ask Daniel what email host/provider do they use.
