@@ -24,7 +24,7 @@ color:white;
    
     margin-bottom: 16px;
     display: block;
-    margin-right: 32px;
+    margin-right: 15px;
     width: 200px ;
     margin-top: 5px;
     padding: 10px;
@@ -40,6 +40,7 @@ text-align: left;
 }
 
 .form-button{
+    position:relative;
     padding: 16px 24px;
     background-color: rgb(106, 52, 144);
     color: white;
@@ -47,6 +48,8 @@ text-align: left;
     width: 120px;
     border-radius: 3px;
     transition: 0.5s all;
+    left:5px;
+    
 }
 
 .form-button:hover{

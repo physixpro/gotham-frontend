@@ -149,7 +149,7 @@ const RegistrationForm = () => {
       skillFive === "Yes" &&
       skillSix === "Yes"
     ) {
-      setMessage(`User is registered and their level is ${level}`);
+      setMessage(`Athlete is registered and their level is ${level}`);
       // If they are IGC, save this information in the database
       const newUser = {
         coachName: coachName,
@@ -178,7 +178,7 @@ const RegistrationForm = () => {
       resetAnswers();
     } else {
       setLevel("Beginner");
-      setMessage(`User is registered and their level is ${level}`);
+      setMessage(`Athlete is registered and their level is ${level}`);
       const newUser = {
         coachName: coachName,
         athleteName: athleteName,
@@ -240,6 +240,7 @@ const RegistrationForm = () => {
               Email:
               <input
                 required
+                className="form-input"
                 type="email"
                 name="email"
                 placeholder="enter email"
