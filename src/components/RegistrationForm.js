@@ -213,6 +213,7 @@ const RegistrationForm = () => {
       <section className="form-background-image">
         <form className="registration-form" onSubmit={registrationAndMessage}>
           <section className="input-container">
+            
             <label className="form-label">
               Coach Name:
               <input
