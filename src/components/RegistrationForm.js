@@ -243,7 +243,7 @@ const RegistrationForm = () => {
                 className="form-input"
                 type="email"
                 name="email"
-                placeholder="enter email"
+                placeholder="Enter Email"
                 onChange={recordEmail}
                 value={email}
               />

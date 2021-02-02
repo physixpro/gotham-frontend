@@ -57,9 +57,10 @@ text-align: left;
 }
 
 .success-message{
+    letter-spacing: 1.5px;
     padding: 12px 24px;
     background-color: rgb(106, 52, 144,1);
-    color:white;
+    color: #BADA55;
     font-weight: bold;
     font-size: 25px;
 }
