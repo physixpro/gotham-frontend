@@ -1,5 +1,5 @@
 import RegistrationForm from './components/RegistrationForm';
-import Users from './components/Users';
+
 import './App.css';
 
 

@@ -160,8 +160,7 @@ const RegistrationForm = () => {
         email: email
       };
       const res = await axios.post(
-        "http://localhost:3001/evaluations",
-        // "https://gotham-backend.herokuapp.com/evaluations",
+        "https://gotham-backend.herokuapp.com/evaluations",
         newUser
       );
       console.log(res);
@@ -170,6 +169,7 @@ const RegistrationForm = () => {
       setDate("");
       setParentName("");
       setEmail("")
+      resetAnswers()
     } else if (level === "IGC") {
       setLevel("Advanced");
       resetAnswers();
