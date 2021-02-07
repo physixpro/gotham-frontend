@@ -649,7 +649,7 @@ const RegistrationForm = () => {
           <h5 id="gotham-footer">GOTHAM</h5>
           <h5 id="gymnastics-footer">GYMNASTICS</h5>
           <div id="trademark">&trade;</div>
-          <h7 id="brooklyn-footer">BROOKLYN</h7>
+          <h6 id="brooklyn-footer">BROOKLYN</h6>
         </footer>
       </section>
     </div>
