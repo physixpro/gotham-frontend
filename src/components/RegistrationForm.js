@@ -240,7 +240,7 @@ const RegistrationForm = () => {
             <label className="form-label">
               Email:
               <input
-                required
+                //email not required for purposes of not sending the parent an email in case classes are full
                 className="form-input"
                 type="email"
                 name="email"
@@ -272,6 +272,18 @@ const RegistrationForm = () => {
                 type="text"
                 name=" parent name"
                 placeholder="Parent Name"
+                onChange={recordParentName}
+                value={parentName}
+              />
+            </label>
+            <label className="form-label">
+              Phone-Number:
+              <input
+                required
+                className="form-input"
+                type="tel"
+                name=" phone number"
+                placeholder="555-555-5555"
                 onChange={recordParentName}
                 value={parentName}
               />
