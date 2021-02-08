@@ -41,6 +41,7 @@ const RegistrationForm = () => {
   const [date, setDate] = useState("");
   const [athleteName, setAthleteName] = useState("");
   const [parentName, setParentName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("")
 
   /************* saving the current state of the fields as the user types in the input fields ***********/
   const recordCoachName = (e) => {
@@ -60,6 +61,11 @@ const RegistrationForm = () => {
   const recordParentName = (e) => {
     setParentName(e.target.value);
   };
+
+  const recordPhoneNumber = (e) => {
+    setPhoneNumber(e.target.value);
+    console.log(e.target.value)
+  }
 
   /**** removed the (e) from the register user because the event now goes to the registerAndMessage function onSubmit */
 
@@ -284,8 +290,9 @@ const RegistrationForm = () => {
                 type="tel"
                 name=" phone number"
                 placeholder="555-555-5555"
-                onChange={recordParentName}
-                value={parentName}
+                onChange={recordPhoneNumber}
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                value={phoneNumber}
               />
             </label>
           </section>
