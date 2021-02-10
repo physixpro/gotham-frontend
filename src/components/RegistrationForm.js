@@ -163,7 +163,8 @@ const RegistrationForm = () => {
         date: date,
         parentName: parentName,
         level: level,
-        email: email
+        email: email,
+        phoneNumber: phoneNumber
       };
       const res = await axios.post(
         "https://gotham-backend.herokuapp.com/evaluations",
@@ -175,6 +176,7 @@ const RegistrationForm = () => {
       setDate("");
       setParentName("");
       setEmail("")
+      setPhoneNumber("")
       resetAnswers()
     } else if (level === "IGC") {
       setLevel("Advanced");
@@ -191,6 +193,7 @@ const RegistrationForm = () => {
         date: date,
         parentName: parentName,
         email: email,
+        phoneNumber: phoneNumber,
         level: "Beginner",
         
       };
