@@ -244,7 +244,7 @@ const RegistrationForm = () => {
               />
             </label>
             <label className="form-label">
-              Email:
+              Parent Email:
               <input
                 //email not required for purposes of not sending the parent an email in case classes are full
                 className="form-input"
@@ -259,7 +259,7 @@ const RegistrationForm = () => {
 
           <section className="input-container">
             <label className="form-label">
-              Athlete Name:
+              Athlete Full Name:
               <input
                 required
                 className="form-input"
@@ -277,7 +277,7 @@ const RegistrationForm = () => {
                 className="form-input"
                 type="text"
                 name=" parent name"
-                placeholder="Parent Name"
+                placeholder="Parent Full Name"
                 onChange={recordParentName}
                 value={parentName}
               />
